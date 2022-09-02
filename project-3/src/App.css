@@ -1,0 +1,103 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-shadow: border-box;
+}
+
+body {
+  background-color: #252525;
+  color: #ffffff;
+}
+
+body, html, input {
+  font-size: 1rem;
+  font-family: 'Roboto';
+}
+
+h2 {
+  font-size: 2rem;
+  color: #833471;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #833471;
+  margin-bottom: 1rem;
+}
+
+.container {
+  width: 100%;
+  height: 100vw;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  border: none;
+  background: #833471;
+  color: white;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+
+button:hover {
+  opacity: .7;
+}
+
+button[disabled] {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+article {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  margin: 0.5rem auto;
+  border-radius: 6px;
+  border: 1px solid #833471;
+  text-align: left;
+}
+
+form {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+form div {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  min-width: 100px;
+}
+
+input, select {
+  flex: 1;
+  border: none;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  padding: 0.3rem;
+  font-size: 1rem;
+}
+
+
+.reactionButton {
+  padding: 0.2rem;
+  background: transparent
+}
+
+.reactionButton:hover {
+  opacity: .7;
+}
