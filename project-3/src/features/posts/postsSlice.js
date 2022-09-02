@@ -4,23 +4,30 @@ import axios from "axios";
 
 const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
 
+const initialState = {
+  posts: [],
+  status: "idle", //'idle' | 'loading' | 'succeeded' | 'failed'
+  error: null,
+};
+
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   const response = await axios.get(POSTS_URL);
-  console.log(response.data);
   return response.data;
 });
 
-const initialState = {
-  posts: [],
-  status: "idle", //loading - succeeded - failed
-  error: null,
-};
+export const addNewPost = createAsyncThunk(
+  "posts/addNewPost",
+  async (initialPost) => {
+    const response = await axios.post(POSTS_URL, initialPost);
+    return response.data;
+  }
+);
 
 const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
-    postAdd: {
+    postAdded: {
       reducer(state, action) {
         state.posts.push(action.payload);
       },
@@ -96,10 +103,10 @@ const postsSlice = createSlice({
         action.payload.date = new Date().toISOString();
         action.payload.reactions = {
           thumbsUp: 0,
-          hooray: 0,
+          wow: 0,
           heart: 0,
           rocket: 0,
-          eyes: 0,
+          coffee: 0,
         };
         console.log(action.payload);
         state.posts.push(action.payload);
@@ -110,6 +117,7 @@ const postsSlice = createSlice({
 export const selectAllPosts = (state) => state.posts.posts;
 export const getPostsStatus = (state) => state.posts.status;
 export const getPostsError = (state) => state.posts.error;
-export const { postAdd, reactionAdded } = postsSlice.actions;
+
+export const { postAdded, reactionAdded } = postsSlice.actions;
 
 export default postsSlice.reducer;
